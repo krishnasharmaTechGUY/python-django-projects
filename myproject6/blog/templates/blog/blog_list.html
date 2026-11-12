@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html 
+<head>
+    <title>#3 Template Basic </title>
+</head>
+<body>
+    <h1> Blog Filter page</h1>
+    <p>{{today}}</p>
+    <!-- if else  -->
+     {%if blogs.1.is_featured%}
+     <h2> Featured Blog:{{blogs.1.title}} -Normal BLog</h2>
+     {%else%}
+     <h2>No Feattured Blog:{{blogs.1.title}} -Regular Blog</h2>
+     {% endif %}
+     <!-- For Loop -->
+      <ul>
+      {% for blog in blogs%}
+      <li>{{forloop.counter}}. {{blog.title}} - {{blog.Author}}</li>
+      {% empty %}
+      <li> NO blogs available.</li>
+      {% endfor %}
+      </ul>
+      <!-- using with tag -->
+       {%with total_blogs=blogs|length%}
+       <p> Total Blogs: {{total_blogs}}</p>
+       {%endwith%}
+
+       <!-- cycle  -->
+        <hr />
+        <h2>Blogs in Table</h2>
+        <Table border="1" cellpadding="5" cellspacing="0">
+            {%for blog in blogs%}
+            <tr style ="background-color: {% cycle 'lightblue' 'lightgreen' %};">
+                <td>{{forloop.counter}}</td>
+                <td>{{blog.title}}</td>
+                <td>{{blog.Author}}</td>
+                </tr>
+                {% endfor%}
+            </Table>
+            <!-- first of -->
+            <p>Author:{%firstof blog.1.Author "ABC"%}</p>
+
+            <!-- verbatim it just ignore template parsing -->
+            {%verbatim%}
+            <p> Author:{{blog.1.Author}}</p>
+            {%endverbatim%}
+
+            <!-- autoescape -->
+             <h2>Autoescape Example</h2>
+             <p>default(Safe Escaped): {{html_code}}</p>
+
+             <!-- Autoescape should be on coz any user can insert then then can inject anyhting to your site and autoescape is on in django -->
+
+
+
+    </body>
+</html>
