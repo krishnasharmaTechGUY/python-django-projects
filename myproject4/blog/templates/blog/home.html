@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html 
+<head>
+    <title>#1 Template Basic </title>
+</head>
+<body>
+    <h1> Template Basic</h1>
+    <!-- this is new comment -->
+    <p> This is the simple demonstration of basic html structure</p>
+    <p> Welcome to the Blog homepage</p>
+      <!-- This is single variable  -->
+    <p>Name: {{name}} </p>
+    <p>Age: {{age}}</p>
+    
+    <!-- this below code is used to access the list -->
+    <p>Skills: {{skill}}</p>
+    <!-- this is object attribute -->
+     <P>User Name: {{user.name}}</p>
+     <P></P>User Age: {{user.age}}</p>
+
+     <!-- Dicitionary access  -->
+      <h2> Blog Information</h2>
+      <p>Title:{{blog.title}}</p>
+      <p>Creted At:{{blog.created_at}}</p>
+      <!-- using safe here  -->
+      <p>Content:{{blog.content|safe}}</p>
+      <p>Name:{{blog.author.name}}</p>
+      <!-- the above name : blog.author.name is example of using nested variable -->
+      <!-- default value  -->
+       <p>Default Empty Value:{{empty_value|default_if_none:" NO Data"}}</p>
+
+</body>
+</html>
